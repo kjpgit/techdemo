@@ -51,4 +51,4 @@ I was expecting something in the runtime (e.g. epoll) to break.  .NET just keeps
 
 - Run `swapoff -a` so swap isn't hiding memory usage.
 
-- To increase file descriptors in a GUI session: Set in `DefaultLimitNOFILE=2000000` in `/etc/systemd/system.conf` and `/etc/systemd/user.conf`.  Then reboot (yes, reboot).  Also update `/proc/sys/fs/file-max` to 3000000.
+- To increase file descriptors in a GUI session: Set in `DefaultLimitNOFILE=2000000` in `/etc/systemd/system.conf` and `/etc/systemd/user.conf`.  Then reboot (yes, reboot).  Also update `/proc/sys/fs/file-max` to 3000000.  Alternatively, just spawn some shells via root...
