@@ -29,8 +29,8 @@ It uses the standard .NET Core networking library, nothing fancy.
 
 ## Conclusion
 
-Again, very impressive!  
-This is only about 2x of what the toy coroutine allocated.  
+Again, very impressive!
+This is only about 2x of what the toy coroutine allocated.
 It's likely that the memory overhead of the language / runtime is
 going to be small compared to your application-specific data.
 
