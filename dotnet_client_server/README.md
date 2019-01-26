@@ -18,7 +18,7 @@ It uses the standard .NET Core networking library, nothing fancy.
 
 * Server baseline (1 client): 79 MB RSS / 3260 MB VSS
 
-* Server loaded (500000 clients, sending requests every 30 seconds): 1000-1300 MB RSS / 4430 MB VSS (RSS fluctuates due to GC) (`dotnet run -c Release -- client 500000 30`)
+* Server loaded (500000 persistent client connections, sending requests every 30 seconds): 1000-1300 MB RSS / 4430 MB VSS (RSS fluctuates due to GC) (`dotnet run -c Release -- client 500000 30`)
 
 * Delta: 1000-1200 MB RSS, 1200 MB VSS
 
