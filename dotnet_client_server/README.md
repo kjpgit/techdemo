@@ -18,7 +18,7 @@ It uses the standard .NET Core networking library, nothing fancy.
 
 * Server baseline (1 client): 79 MB RSS / 3260 MB VSS
 
-* Server loaded (500000 clients, 30 second delay): 1000-1300 MB RSS / 4430 MB VSS (RSS fluctuates due to GC) (`dotnet run -c Release -- client 500000 30`)
+* Server loaded (500000 clients, sending requests every 30 seconds): 1000-1300 MB RSS / 4430 MB VSS (RSS fluctuates due to GC) (`dotnet run -c Release -- client 500000 30`)
 
 * Delta: 1000-1200 MB RSS, 1200 MB VSS
 
@@ -38,5 +38,8 @@ Obviously C/C++/Rust with handwritten state machines could make this way smaller
 But at some point there are diminishing returns, and also developer
 productivity, bugs, and security are big tradeoffs.
 
-I also appreciate the exceptions thrown by the runtime when I was up against max file descriptor limits.
+I appreciate the exceptions thrown by the runtime when I was up against max file descriptor limits.
 "Errors must not pass silently" - I'm glad C# agrees.
+
+I also appreciate that everything "just worked" with 500K Unix sockets.  
+I was expecting something in the runtime (e.g. epoll) to break.  .NET just keeps surprising me.
