@@ -78,8 +78,7 @@ namespace dotnet_massive_async
 
         private string GetMemInfo() {
             var data = File.ReadAllText("/proc/self/statm").Split(' ');
-            return $"vmsize={data[0]} vmrss={data[1]}";
-
+            return $"(NB: 4K pages) vmsize={data[0]} vmrss={data[1]}";
         }
 
         DateTime lastDumpTime = DateTime.UtcNow;
