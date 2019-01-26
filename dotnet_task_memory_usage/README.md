@@ -2,7 +2,7 @@
 
 Measure the memory usage of a barebones C# coroutine (e.g. async/await task).
 
-The task just sleeps and hits a scoreboard in a loop.  See the trivial [source code](Program.cs).
+Each task just sleeps and hits a scoreboard in a loop.  See the trivial [source code](Program.cs).
 
 
 ## Details
