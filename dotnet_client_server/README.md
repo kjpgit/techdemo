@@ -41,5 +41,5 @@ productivity, bugs, and security are big tradeoffs.
 I appreciate the exceptions thrown by the runtime when I was up against max file descriptor limits.
 "Errors must not pass silently" - I'm glad C# agrees.
 
-I also appreciate that everything "just worked" with 500K Unix sockets.  
+I also appreciate that everything "just worked" with 500K Unix sockets.
 I was expecting something in the runtime (e.g. epoll) to break.  .NET just keeps surprising me.

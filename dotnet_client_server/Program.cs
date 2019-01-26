@@ -45,13 +45,13 @@ namespace dotnet_massive_async
             for (var i = 0; i < numConnections; i++) {
                 Socket sock = new Socket(AddressFamily.Unix, SocketType.Stream, ProtocolType.Unspecified);
                 sock.Connect(localEndPoint);
-                var clientTask = StartClient(sock, sleepSeconds, scoreboard);
+                var clientTask = RunClientconnection(sock, sleepSeconds, scoreboard);
                 Console.WriteLine($"Connected {i}");
             }
             await scoreboard.PollScores();
         }
 
-        static async Task StartClient(Socket sock, double sleepSeconds, Scoreboard scoreboard)
+        static async Task RunClientconnection(Socket sock, double sleepSeconds, Scoreboard scoreboard)
         {
             try {
                 using (var stream = new NetworkStream(sock)) {
@@ -90,12 +90,12 @@ namespace dotnet_massive_async
 
             while (true) {
                 Socket clientSocket = await listener.AcceptAsync();
-                Task t = StartServerTask(clientSocket);
+                Task t = RunServerConnection(clientSocket);
             }
         }
 
         // Read a byte and write it back to the client, in a loop
-        static async Task StartServerTask(Socket sock) 
+        static async Task RunServerConnection(Socket sock) 
         {
             try {
                 using (var stream = new NetworkStream(sock)) {
