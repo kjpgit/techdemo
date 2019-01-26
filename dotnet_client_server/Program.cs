@@ -51,6 +51,7 @@ namespace dotnet_massive_async
             await scoreboard.PollScores();
         }
 
+        // Send a byte to the server every so often, and read the reply
         static async Task RunClientconnection(Socket sock, double sleepSeconds, Scoreboard scoreboard)
         {
             try {
@@ -121,6 +122,7 @@ namespace dotnet_massive_async
         {
             Console.WriteLine($"Fatal error: ${e}");
             Console.WriteLine(e.StackTrace);
+            Environment.Exit(1);
         }
     }
 
