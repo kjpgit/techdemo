@@ -18,13 +18,13 @@ It uses the standard .NET Core networking library, nothing fancy.
 
 * Server baseline (1 client): 79 MB RSS / 3260 MB VSS
 
-* Server loaded (500000 clients): 1000-1300 MB RSS / 4430 MB VSS (RSS fluctuates due to GC)
+* Server loaded (500000 clients, 30 second delay): 1000-1300 MB RSS / 4430 MB VSS (RSS fluctuates due to GC) (`dotnet run -c Release -- client 500000 30`)
 
 * Delta: 1000-1200 MB RSS, 1200 MB VSS
 
 * Per client overhead (C# server process only, not including kernel): **2000-2400 bytes RSS, 2400 bytes VSS**
 
-* Also, the client process has a very similar memory usage profile as the server process.  They both end up settling at 1GB after a period of time.
+* Also, the client process has a very similar memory usage profile as the server process.  They both end up settling at 1GB RSS after a period of time.
 
 
 ## Conclusion
@@ -33,3 +33,6 @@ Again, very impressive!
 This is only about 2x of what the toy coroutine allocated.  
 It's likely that the memory overhead of the language / runtime is
 going to be small compared to your application-specific data.
+
+I also appreciate the exceptions thrown by the runtime when I was up against max file descriptor limits.
+"Errors must not pass silently" - I'm glad C# agrees.
