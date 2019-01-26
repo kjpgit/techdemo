@@ -34,5 +34,9 @@ This is only about 2x of what the toy coroutine allocated.
 It's likely that the memory overhead of the language / runtime is
 going to be small compared to your application-specific data.
 
+Obviously C/C++/Rust with handwritten state machines could make this way smaller, e.g. under 100 bytes. 
+But at some point there are diminishing returns, and also developer
+productivity, bugs, and security are big tradeoffs.
+
 I also appreciate the exceptions thrown by the runtime when I was up against max file descriptor limits.
 "Errors must not pass silently" - I'm glad C# agrees.
