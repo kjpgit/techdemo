@@ -34,5 +34,4 @@ The CPU isn't maxed out, so not sure why the GC isn't keeping up.
 
 ## Coming Next
 
-In our next episode, we will investigate actual socket wakeups (e.g. epoll) to
-see scalability limits for an actual client/server.
+In our [next episode](../dotnet_client_server/), we will run an actual network client/server and compare its memory usage.

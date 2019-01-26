@@ -14,7 +14,7 @@ namespace dotnet_massive_async
 {
     class Program
     {
-        static string SocketName = "/tmp/csharp_unix.socket";
+        static string SocketName = "\0/tmp/csharp_unix.socket";
 
         static async Task Main(string[] args)
         {
