@@ -43,3 +43,12 @@ I appreciate the exceptions thrown by the runtime when I was up against max file
 
 I also appreciate that everything "just worked" with 500K Unix sockets.
 I was expecting something in the runtime (e.g. epoll) to break.  .NET just keeps surprising me.
+
+
+## Additional Testing Tips
+
+- When testing, note that `/proc/self/statm` is in *4K pages*, unlike `top`.  
+
+- Run `swapoff -a` so swap isn't hiding memory usage.
+
+- To increase file descriptors in a GUI session: Set in `DefaultLimitNOFILE=2000000` in `/etc/systemd/system.conf` and `/etc/systemd/user.conf`.  Then reboot (yes, reboot).  Also update `/proc/sys/fs/file-max` to 3000000.
