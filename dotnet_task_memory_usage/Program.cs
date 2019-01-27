@@ -52,27 +52,20 @@ namespace dotnet_massive_async
         // since there are so few physical threads.
         public void AddHit() {
             int threadId = Thread.CurrentThread.ManagedThreadId;
-            lock (this) {
-                long current = threadScore.GetValueOrDefault(threadId, 0);
-                threadScore[threadId] = current + 1;
-            }
+            Interlocked.Increment(ref this.score);
         }
 
         // Run forever.  Print stats every second.
         public async Task PollScores() {
-            while (true) {
+            for (int i = 0; i < 10; i++) {
                 await Task.Delay(TimeSpan.FromSeconds(1.0));
-                lock (this) {
-                    int numThreads = threadScore.Keys.Count;
-                    long totalHits = threadScore.Values.Sum();
-                    DateTime currentTime = DateTime.UtcNow;
-                    TimeSpan elapsed = currentTime - lastDumpTime;
-                    Console.WriteLine($"elapsed={elapsed} numThreads={numThreads}" +
-                        $" totalHits={totalHits}");
-                    Console.WriteLine(GetMemInfo());
-                    threadScore.Clear();
-                    lastDumpTime = currentTime;
-                }
+                long totalHits = Interlocked.Read(ref this.score);
+                DateTime currentTime = DateTime.UtcNow;
+                TimeSpan elapsed = currentTime - lastDumpTime;
+                Console.WriteLine($"elapsed={elapsed} totalHits={totalHits}");
+                Console.WriteLine(GetMemInfo());
+                Interlocked.Exchange(ref this.score, 0);
+                lastDumpTime = currentTime;
             }
         }
 
@@ -83,7 +76,6 @@ namespace dotnet_massive_async
 
         DateTime lastDumpTime = DateTime.UtcNow;
 
-        // threadId -> operation count
-        Dictionary<int, long> threadScore = new Dictionary<int, long>();
+        long score = 0;
     }
 }
