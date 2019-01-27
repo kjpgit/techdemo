@@ -47,7 +47,7 @@ I was expecting something in the runtime (e.g. epoll) to break.  .NET just keeps
 
 ## Additional Testing Tips
 
-- When testing, note that `/proc/self/statm` is in *4K pages*, unlike `top`.  
+- ~~When testing, note that `/proc/self/statm` is in 4K pages, unlike `top`.~~  Ruh roh, a commenter pointed out this is NOT true, it can be a mix of small and large pages, so it's useless.  Better stick to `/proc/self/status`.
 
 - Run `swapoff -a` so swap isn't hiding memory usage.
 
