@@ -16,7 +16,7 @@ So we will compare the CPU and memory usage of a toy C# coroutine (e.g. async me
 
 ## Results 
 
-(See blog post)
+* Jan 2019: [medium post](https://medium.com/@karl.pickett/benchmarking-a-toy-c-task-vs-a-go-goroutine-is-there-any-difference-248f73f7f7b7)
 
 
 ## Disclaimer
