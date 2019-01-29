@@ -21,10 +21,12 @@ So we will compare the CPU and memory usage of a toy C# coroutine (e.g. async me
 
 ## Disclaimer
 
-This is a micro-benchmark.  Your application is not a micro-benchmark.
+* This is a micro-benchmark.  Your application is not a micro-benchmark.
 
-Benchmarks can be gamed.  
+* Benchmarks can be gamed. Benchmarks are hard to do correctly.
 
-Be mindful of [Goodhart's law](https://en.wikipedia.org/wiki/Goodhart%27s_law)
+* Be mindful of Goodhart’s law: “When a measure becomes a target, it ceases to be a good measure.”
 
-And watch https://www.youtube.com/watch?v=vm1GJMp0QN4&t=17m49s for a hilarious benchmark failure
+* This code is not designed for high core count machines due to the single (not sharded) atomic counter
+
+* And watch https://www.youtube.com/watch?v=vm1GJMp0QN4&t=17m49s for a hilarious benchmark failure

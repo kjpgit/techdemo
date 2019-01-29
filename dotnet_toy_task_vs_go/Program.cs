@@ -44,6 +44,14 @@ namespace dotnet_massive_async
 
         static async Task WorkTask(Scoreboard scoreboard, TimeSpan sleepDelay)
         {
+            // NB: The first AddHit() runs synchronously.
+            // Only the first await returns control back to the startup loop in Main().
+            // 
+            // This could be changed to:
+            // a) await Task.Yield() at the start of this function
+            // b) reorder AddHit() and Task.Delay() (and do the same in the Go code)
+            // c) change function signature and use Task.Run()???
+            //
             while (true) {
                 scoreboard.AddHit();
                 await Task.Delay(sleepDelay);
