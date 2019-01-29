@@ -35,7 +35,9 @@ namespace dotnet_massive_async
             // shows a reasonable "elapsed" time.
             //
             for (var i = 0; i < numTasks; i++) {
-                // Note: we used to add this to a list, but that is not necessary.
+                // Note: We used to add this to a list, but that is not necessary.
+                // Note: We assign to a variable just to supress a compiler warning
+                // that we aren't using await here. 
                 var task = WorkTask(scoreboard, sleepDelay);
             }
 
