@@ -7,7 +7,7 @@ Each task just sleeps and hits a scoreboard in a loop.  See the trivial [source 
 
 ## Details
 
-* .NET Core 2.2.102 on Ubuntu 18.04 (`dotnet --version`).  Memory information from `/proc/self/statm`.
+* .NET Core 2.2.102 on Ubuntu 18.04 (`dotnet --version`).  Memory information from `/proc/self/status`.
 
 * Default threadpool settings, which appear to use 3-5 actual threads for tasks, on my dual core Pentium
 

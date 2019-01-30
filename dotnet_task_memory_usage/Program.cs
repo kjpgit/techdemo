@@ -27,6 +27,8 @@ namespace dotnet_massive_async
             var taskList = new List<Task>();
             for (var i = 0; i < numTasks; i++) {
                 var task = WorkTask(scoreboard, sleepSeconds);
+
+                // NB: Adding it to a list is unnecessary.
                 taskList.Add(task);
             }
 
@@ -69,16 +71,20 @@ namespace dotnet_massive_async
                     TimeSpan elapsed = currentTime - lastDumpTime;
                     Console.WriteLine($"elapsed={elapsed} numThreads={numThreads}" +
                         $" totalHits={totalHits}");
-                    Console.WriteLine(GetMemInfo());
+                    PrintMemInfo();
                     threadScore.Clear();
                     lastDumpTime = currentTime;
                 }
             }
         }
 
-        private string GetMemInfo() {
-            var data = File.ReadAllText("/proc/self/statm").Split(' ');
-            return $"(NB: 4K pages) vmsize={data[0]} vmrss={data[1]}";
+        private void PrintMemInfo() {
+            var lines = File.ReadAllText("/proc/self/status").Split('\n');
+            foreach (var line in lines) {
+                if (line.StartsWith("VmSize:") || line.StartsWith("VmRSS:")) {
+                    Console.WriteLine(" - " + line);
+                }
+            }
         }
 
         DateTime lastDumpTime = DateTime.UtcNow;
