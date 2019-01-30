@@ -1,3 +1,5 @@
+//#define USE_TASK_RUN_LAMBDA
+
 using System;
 using System.Linq;
 using System.IO;
@@ -38,7 +40,14 @@ namespace dotnet_massive_async
                 // Note: We used to add this to a list, but that is not necessary.
                 // Note: We assign to a variable just to supress a compiler warning
                 // that we aren't using await here. 
+
+#if USE_TASK_RUN_LAMBDA
+                // Warning: Task.Run() with a lambda closure adds mem/cpu overhead
+                // (+10% CPU, +20% memory on a short 10 second test)
+                var task = Task.Run(() => WorkTask(scoreboard, sleepDelay));
+#else
                 var task = WorkTask(scoreboard, sleepDelay);
+#endif
             }
 
             await scoreboard.PollScores(maxHits);
@@ -46,14 +55,10 @@ namespace dotnet_massive_async
 
         static async Task WorkTask(Scoreboard scoreboard, TimeSpan sleepDelay)
         {
-            // NB: The first AddHit() runs synchronously.
-            // Only the first await returns control back to the startup loop in Main().
-            // 
-            // This could be changed to:
-            // a) await Task.Yield() at the start of this function
-            // b) reorder AddHit() and Task.Delay() (and do the same in the Go code)
-            // c) change function signature and use Task.Run()???
-            //
+#if !USE_TASK_RUN_LAMBDA
+            // Start using the threadpool immediately
+            await Task.Yield();
+#endif
             while (true) {
                 scoreboard.AddHit();
                 await Task.Delay(sleepDelay);
