@@ -14,6 +14,7 @@ namespace dotnet_massive_async
 {
     class Program
     {
+        // The leading null byte puts it in the abstract namespace
         static string SocketName = "\0/tmp/csharp_unix.socket";
 
         static async Task Main(string[] args)
@@ -148,6 +149,7 @@ namespace dotnet_massive_async
         {
             while (true) {
                 await Task.Delay(TimeSpan.FromSeconds(1.0));
+                // NB: In a real app, don't do any IO inside the lock.
                 lock (this) {
                     int numThreads = threadScore.Keys.Count;
                     long totalHits = threadScore.Values.Sum();
@@ -155,18 +157,20 @@ namespace dotnet_massive_async
                     TimeSpan elapsed = currentTime - lastDumpTime;
                     Console.WriteLine($"elapsed={elapsed} numThreads={numThreads}" +
                         $" totalHits={totalHits}");
-                    Console.WriteLine(GetMemInfo());
+                    PrintMemInfo();
                     threadScore.Clear();
                     lastDumpTime = currentTime;
                 }
             }
         }
 
-        // Be careful, statm shows units in pages, not 1K units.
-        private string GetMemInfo() 
-        {
-            var data = File.ReadAllText("/proc/self/statm").Split(' ');
-            return $"(NB: 4K Pages) vmsize={data[0]} vmrss={data[1]}";
+        private void PrintMemInfo() {
+            var lines = File.ReadAllText("/proc/self/status").Split('\n');
+            foreach (var line in lines) {
+                if (line.StartsWith("VmSize:") || line.StartsWith("VmRSS:")) {
+                    Console.WriteLine(" - " + line);
+                }
+            }
         }
 
         DateTime lastDumpTime = DateTime.UtcNow;
