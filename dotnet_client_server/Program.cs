@@ -46,14 +46,14 @@ namespace dotnet_massive_async
             for (var i = 0; i < numConnections; i++) {
                 Socket sock = new Socket(AddressFamily.Unix, SocketType.Stream, ProtocolType.Unspecified);
                 sock.Connect(localEndPoint);
-                var clientTask = RunClientconnection(sock, sleepSeconds, scoreboard);
+                var clientTask = RunClientConnection(sock, sleepSeconds, scoreboard);
                 Console.WriteLine($"Connected {i}");
             }
             await scoreboard.PollScores();
         }
 
         // Send a byte to the server every so often, and read the reply
-        static async Task RunClientconnection(Socket sock, double sleepSeconds, Scoreboard scoreboard)
+        static async Task RunClientConnection(Socket sock, double sleepSeconds, Scoreboard scoreboard)
         {
             try {
                 using (var stream = new NetworkStream(sock)) {
