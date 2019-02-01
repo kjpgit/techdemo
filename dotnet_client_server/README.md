@@ -16,7 +16,7 @@ It uses the standard .NET Core networking library, nothing fancy.
 
 * Default threadpool settings, which appear to use 10-12 actual threads for the client, on my dual core Pentium
 
-* Unix stream sockets to make it simple (TCP is just annoying, even on loopback)
+* Unix stream sockets to make it simple (TCP is just annoying, even on loopback - 64K port limit, TIME_WAIT hassles)
 
 * Server baseline (1 client): 79 MB RSS / 3260 MB VSS
 
