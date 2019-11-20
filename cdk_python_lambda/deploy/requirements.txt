@@ -1,0 +1,17 @@
+# These are just for the CDK / deployment,
+# not used by the lambda code
+# I'm not version pinning these, but that could be done, like
+# we do for the app dependencies (../source/create-requirements.sh)
+aws-cdk.core
+aws-cdk.aws_ec2
+aws-cdk.aws_events
+aws-cdk.aws_events_targets
+aws-cdk.aws_iam
+aws-cdk.aws_lambda
+aws-cdk.aws_apigateway
+aws-cdk.aws_certificatemanager
+aws-cdk.aws_route53
+aws-cdk.aws_route53_targets
+aws-cdk.aws_lambda_event_sources
+aws-cdk.aws_sqs
+aws-cdk.aws_logs
