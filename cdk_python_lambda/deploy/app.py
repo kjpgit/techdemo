@@ -9,8 +9,8 @@ import my_stack
 
 app = core.App()
 
-# Best practice is to explicitly set account ids
-ACME_ENV_WEST = dict(account="123412341234", region="us-east-2")
+# Best practice is to explicitly set account ids and region
+ACME_ENV_WEST = dict(account="123412341234", region="us-west-2")
 
 my_stack.MyStack(app,
         "acme-prod-DemoLambda",
