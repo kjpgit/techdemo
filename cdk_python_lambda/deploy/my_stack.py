@@ -27,7 +27,8 @@ class MyStack(core.Stack):
                 code=aws_lambda.Code.asset("/app/layer"),
                 )
 
-        # Use only one asset instance, so we aren't using extra cloudformation parameters.
+        # Use only one asset instance, so we aren't using extra cloudformation parameters,
+        # if we create many lambdas from it.
         app_code = aws_lambda.Code.asset("/app/code")
 
         lambda_fn = aws_lambda.Function(self,
