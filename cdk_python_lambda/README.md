@@ -1,6 +1,6 @@
 Example python lambda that demonstrates:
 
-* CDK deployment of a "real world" python Lambda
+* CDK deployment based on "real world" python Lambda projects
 * Using Docker to cache dependencies and insulate build system from CDK requirements
 * Private github repo(s) for company-specific python dependencies
 * Python external dependencies with version pinning (requests, boto3)
