@@ -5,6 +5,7 @@ FROM ubuntu:18.04
 ARG GITHUB_ACCESS_TOKEN
 
 # Bootstrap image (cacheable)
+# TODO: Switch to Amazon Linux, especially if you are building python C-extensions for lambda
 RUN apt-get update && \
     apt-get -y --no-install-recommends -q install python3.6 python3-pip python3-venv python3-setuptools \
         git curl xz-utils && \
