@@ -1,3 +1,6 @@
+## Nov 2019
+
+* [Example CDK Python Lambda](cdk_python_lambda/)
 
 ## Jan 2019
 
@@ -7,5 +10,4 @@
 
 * [Memory usage of 1 million C# Tasks](dotnet_task_memory_usage/)
 
-* [Example CDK Python Lambda](cdk_python_lambda/)
 
