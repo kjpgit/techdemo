@@ -1,7 +1,7 @@
 ## Overview
 
-Benchmark the performance / throttling of AWS Lambda,
-specifically DNS queries in a VPC.
+Benchmark how may DNS queries/second AWS Lambda can do, in a VPC.
+Most microservices heavily rely on DNS, so performance and scalability here is fundamental.
 
 ## Results
 
