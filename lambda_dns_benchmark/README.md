@@ -7,7 +7,7 @@ specifically DNS queries in a VPC.
 
 Results with a concurrency of 256, in a VPC
 
-  * A cacheable request (foo.somewhere.com) can do about 1000/sec per lambda.
+  * A cacheable request (foo.somewhere.com) can do about 1000/sec per Lambda (250-300K/sec total).
 
   * A non-cacheable request ($randomuuid.somewhere.com) only does 40/sec per Lambda! (25x less)
 
