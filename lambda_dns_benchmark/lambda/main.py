@@ -19,7 +19,7 @@ def handler(event, context):
     {
       "fanout": 8,
       "test_hostname": "*.somewhere.com",
-      "duration_secs": 60
+      "duration_secs": 30
     }
 
     Total worker lambdas are (2 ** `fanout`), e.g.:
@@ -35,7 +35,7 @@ def handler(event, context):
 
     To query the logs, run this in cloudwatch logs insights:
 
-        stats sum(num_ok_per_second) as ok_per_second, sum(num_errors) as err by bin(5sec)
+        stats sum(num_ok)/5 as ok_per_second, sum(num_errors) as errors by bin(5sec)
     """
 
     print("event: ", event)
@@ -68,12 +68,12 @@ def run_benchmark_chunk(duration_secs, test_hostname):
     format for cloudwatch logs insights.
     """
     run_start_time = time.time()
-    end_time = time.time() + duration_secs
+    run_end_time = run_start_time + duration_secs
     num_ok = 0
     num_errors = 0
     while True:
         start_time = time.time()
-        if start_time > end_time:
+        if start_time > run_end_time:
             break
         try:
             # NB: Always generating the UUID here, to keep performance consistent
@@ -86,12 +86,9 @@ def run_benchmark_chunk(duration_secs, test_hostname):
             print(json.dumps(data))
             num_errors += 1
 
-    elapsed_secs = start_time - run_start_time
-    num_ok_per_second = num_ok / elapsed_secs
     data = dict(benchmark_type="stats",
             num_ok=num_ok,
-            num_errors=num_errors,
-            num_ok_per_second=num_ok_per_second)
+            num_errors=num_errors)
     print(json.dumps(data))
 
 
