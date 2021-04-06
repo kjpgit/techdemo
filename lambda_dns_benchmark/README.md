@@ -9,7 +9,7 @@ Results with a concurrency of 256, in a VPC
 
   * A cacheable request (foo.somewhere.com) can do about 1000/sec per Lambda (250-300K/sec total).
 
-  * A non-cacheable request ($randomuuid.somewhere.com) only does 40/sec per Lambda! (10k/sec total)
+  * A non-cacheable request ($randomuuid.somewhere.com) only does 40/sec per Lambda! (10k/sec total)  I used a route53 wildcard record for this test.
 
 Note that I had 2 automatically-created ENIs for the above test, so that still
 doesn't make sense.  Documentation says each VPC ENI is only supposed to do 1k/sec.
