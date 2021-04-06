@@ -35,7 +35,8 @@ def handler(event, context):
 
     To query the logs, run this in cloudwatch logs insights:
 
-        stats sum(num_ok)/5 as ok_per_second, sum(num_errors) as errors by bin(5sec)
+        stats sum(num_ok)/5 as ok_per_second, avg(num_ok)/5 as avg_ok,
+            sum(num_errors) as errors by bin(5sec)
     """
 
     print("event: ", event)

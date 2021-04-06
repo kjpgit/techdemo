@@ -3,9 +3,9 @@
 Benchmark how may DNS queries/second AWS Lambda can do, in a VPC.
 Most microservices heavily rely on DNS, so performance and scalability here is fundamental.
 
-## Results
+## Results (VPC)
 
-Results with a concurrency of 256, in a VPC.  All other settings are in the CDK code.
+Results with a concurrency of 256, in a VPC, us-east-2.  All other settings are in the CDK code.
 
   * A cacheable request (foo.somewhere.com) can do about 1000/sec per Lambda (250-300K/sec total).
 
@@ -17,6 +17,11 @@ doesn't make sense.  Documentation says each VPC ENI is only supposed to do 1k/s
 Also, the /etc/resolv.conf in Lambda seems to use a 169.254.x resolver (which indicates a hypervisor is involved), instead of directly querying the VPC's resolver through the ENI.
 
 Source code of Lambda [here](lambda/main.py)
+
+## Results (non-VPC)
+
+  * A non-cacheable request ($randomuuid.somewhere.com) does 80/sec per Lambda (20k/sec total).
+    This is 2x of the VPC result.  The resolver was also a 169.254.x.
 
 ## Conclusion
 
