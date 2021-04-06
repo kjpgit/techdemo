@@ -5,12 +5,11 @@ specifically DNS queries in a VPC.
 
 ## Results
 
-Results with a concurrency of 256
+Results with a concurrency of 256, in a VPC
 
-  * A cacheable request (foo.somewhere.com) gets 250-300k/sec total.  This is about 1K/sec per lambda.
+  * A cacheable request (foo.somewhere.com) can do about 1000/sec per lambda.
 
-  * A non-cacheable request ($randomuuid.somewhere.com) only gets 10k/sec total.
-    This is only 40/sec per Lambda!
+  * A non-cacheable request ($randomuuid.somewhere.com) only does 40/sec per Lambda! (25x less)
 
 Note that I had 2 automatically-created ENIs for the above test, so that still
 doesn't make sense.  Documentation says each VPC ENI is only supposed to do 1k/sec.
