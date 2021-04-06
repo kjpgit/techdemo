@@ -22,3 +22,5 @@ Source code of Lambda [here](lambda/main.py)
 
 Performance of Lambda DNS is highly variable (a cache seems to be involved) and undocumented.
 I have no idea what the performance guarantees or limits are, but it doesn't seem to be based on ENIs.
+
+AWS support told us about the (undocumented) DNS cache and this test verifies it exists.  However that raises even more questions.
