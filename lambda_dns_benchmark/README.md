@@ -29,7 +29,7 @@ AWS support told us about the (undocumented) DNS cache and this test verifies it
 However that makes performance highly variable.
 
 I have no idea what the performance guarantees or limits are, but it doesn't
-seem to be based on the published ENI rate.  Limiting it by ENIS, which are in
-turn based on Lambda security groups, is confusing and stupid-as-hell for
-developers.
+seem to be using the published ENI rate.  Limiting it by ENIs, which are in
+turn based on Lambda security groups, would be confusing-as-hell for
+developers.  It should scale based on Lambda size and concurrency.
 
