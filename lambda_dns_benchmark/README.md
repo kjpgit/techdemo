@@ -12,7 +12,7 @@ Results with a concurrency of 256, in a VPC.  All other settings are in the CDK 
   * A non-cacheable request ($randomuuid.somewhere.com) only does 40/sec per Lambda! (10k/sec total)  I used a route53 wildcard record for this test.
 
 Note that I had 2 automatically-created ENIs for the above test, so that still
-doesn't make sense.  Documentation says each VPC ENI is only supposed to do 1k/sec.
+doesn't make sense.  Documentation says each VPC ENI is only supposed to do 1k/sec, but I'm getting 5x that.
 
 Also, the /etc/resolv.conf in Lambda seems to use a 169.254.x resolver (which indicates a hypervisor is involved), instead of directly querying the VPC's resolver through the ENI.
 
