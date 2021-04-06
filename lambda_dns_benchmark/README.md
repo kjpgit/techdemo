@@ -5,7 +5,7 @@ Most microservices heavily rely on DNS, so performance and scalability here is f
 
 ## Results
 
-Results with a concurrency of 256, in a VPC
+Results with a concurrency of 256, in a VPC.  All other settings are in the CDK code.
 
   * A cacheable request (foo.somewhere.com) can do about 1000/sec per Lambda (250-300K/sec total).
 
