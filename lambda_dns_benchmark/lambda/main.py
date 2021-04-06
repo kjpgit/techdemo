@@ -107,8 +107,3 @@ def launch_fanout(num_children, event):
             Payload=json.dumps(event).encode("utf-8"),
             )
         print("launch_fanout response", response)
-
-
-if __name__ == "__main__":
-    # Confirm python is not caching lookups
-    run_benchmark_chunk(1, "www.amazon.com")
