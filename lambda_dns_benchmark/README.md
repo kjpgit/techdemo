@@ -14,14 +14,14 @@ Results with a concurrency of 256, in a VPC, us-east-2.  All other settings are 
 Note that I had 2 automatically-created ENIs for the above test (one per subnet), so that still
 doesn't make sense.  Documentation says each VPC ENI is only supposed to do 1k/sec, but I'm getting 5x that.
 
-Also, the /etc/resolv.conf in Lambda seems to use a 169.254.x resolver (which indicates a hypervisor is involved), instead of directly querying the VPC's resolver through the ENI.
+Also, the /etc/resolv.conf in Lambda seems to use a 169.254.78.1 resolver (which indicates a hypervisor is involved), instead of directly querying the VPC's resolver through the ENI.
 
 Source code of Lambda [here](lambda/main.py)
 
 ## Results (non-VPC)
 
   * A non-cacheable request ($randomuuid.somewhere.com) does 80/sec per Lambda (20k/sec total).
-    This is 2x of the VPC result.  The resolver was also a 169.254.x.
+    This is 2x of the VPC result.  The resolver was also 169.254.78.1.
 
 ## Conclusion
 
