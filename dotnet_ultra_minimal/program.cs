@@ -65,6 +65,7 @@ class MyController
         bool ret = m_jobs_pending.TryAdd(job.Name, job.Command);
         await Task.Delay(1);  // pretend we did real work
         // This request is idempotent, always return success, but add a message for debugging
+        // If it wasn't idmpotent, you could return an error like Conflict.
         return Results.Ok(ret ? "created" : "not overwriting");
     }
 
