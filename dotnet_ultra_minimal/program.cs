@@ -101,6 +101,9 @@ public record MyUserContext(string env)
             throw new MyWebException(400, "Invalid X-My-Environment");
         }
         var result = new MyUserContext(env: envHeader);
-        return ValueTask.FromResult<MyUserContext?>(result);  // This is a lot of ugly ceremony if you ask me
+
+        // This line is a lot of ugly ceremony if you ask me.
+        // But it's the only place we have to use it, for "speed".
+        return ValueTask.FromResult<MyUserContext?>(result);
     }
 }
