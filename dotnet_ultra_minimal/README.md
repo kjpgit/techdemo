@@ -2,14 +2,12 @@
 
 Are you tired of builders and factories and dependency injection frameworks,
 which themselves are actually the useless dependencies that break on you with
-each annual "upgrade"?
+each annual "upgrade"?  Are you tired of byzantine, poorly documented "helper"
+middleware?
 
-Are you tired of byzantine, poorly documented "helper" frameworks that are
-written by interns, which they don't even consume, to solve problems they have
-imagined, in the most over-engineered fashion to get a promotion?
-
-Well, you don't HAVE to use them!  This project just uses the new "minimal"
-ASP.NET webapis (a very welcome step in the right direction), but nothing else.
+Well, you don't HAVE to use them!  This example project just uses the new
+"minimal" ASP.NET webapis (a very welcome step in the right direction), but
+nothing else.
 
 If you want to make a microservice that just runs for years, without care and
 feeding, to solve business needs, look at the source files in this repo for
