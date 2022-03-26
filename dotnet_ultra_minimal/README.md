@@ -1,4 +1,4 @@
-# Ultra Minimal .NET Core Webservice (on Linux)
+# Ultra Minimal ASP.NET Core Webservice (on Linux)
 
 Are you tired of builders and factories and dependency injection frameworks,
 which themselves are actually the useless dependencies that break on you with
@@ -8,9 +8,12 @@ Are you tired of byzantine, poorly documented "helper" frameworks that are
 written by interns, which they don't even consume, to solve problems they have
 imagined, in the most over-engineered fashion to get a promotion?
 
-Well, you don't HAVE to use them.  If you want to make a microservice that just
-runs for years, without care and feeding, to solve business needs, read on.
-Look at the source files in this repo for ideas, starting with [program.cs](program.cs).
+Well, you don't HAVE to use them!  This project just uses the new "minimal"
+ASP.NET webapis, but nothing else, because they all made me sad.
+
+If you want to make a microservice that just runs for years, without care and
+feeding, to solve business needs, look at the source files in this repo for
+ideas, starting with [program.cs](program.cs).
 
 To run this example, install dotnet 6 SDK on linux and then run:
 
