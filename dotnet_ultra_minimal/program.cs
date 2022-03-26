@@ -76,6 +76,8 @@ class MyController
         } else {
             // Throwing an exception may be more overhead than returning an IResult,
             // so do your own diligence and perf testing.
+            // Also, you should probably make the TakeJobResponse able to
+            // indicate all common failures.
             throw new MyWebException(404, "Job not found");
         }
     }
