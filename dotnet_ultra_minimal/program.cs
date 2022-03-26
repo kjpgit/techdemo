@@ -18,10 +18,11 @@ var app = builder.Build();
 // This is so nice.  Wrap all our requests in a try/catch.
 // This handles authentication, authorization, or any other
 // failures we want to map to a nice HTTP response.
-// Of course I didn't stumble upon this wonderful feature in the official docs...
+// Of course I didn't stumble upon this wonderful feature in the official 'minimal' docs...
 app.Use(async (ctx, next) =>
 {
     try {
+        // pass in ctx per https://github.com/dotnet/aspnetcore/pull/31784
         await next(ctx);
     }
     catch(MyWebException ex) {
