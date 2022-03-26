@@ -9,7 +9,8 @@ written by interns, which they don't even consume, to solve problems they have
 imagined, in the most over-engineered fashion to get a promotion?
 
 Well, you don't HAVE to use them!  This project just uses the new "minimal"
-ASP.NET webapis, but nothing else, because they all made me sad and frustrated.
+ASP.NET webapis (a very welcome step), but nothing else, because they all made
+me sad and frustrated.
 
 If you want to make a microservice that just runs for years, without care and
 feeding, to solve business needs, look at the source files in this repo for
