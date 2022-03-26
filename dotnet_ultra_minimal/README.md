@@ -31,6 +31,9 @@ Response: 400
 ## Adding good job
 "created"
 Response: 200
+## Adding good job - idempotent retry
+"not overwriting"
+Response: 200
 ## Taking job
 {"Command":"test123","ExecutionId":"123"}
 Response: 200

@@ -18,6 +18,8 @@ test:
 	@$(CURL_TEST) $(TEST_URL)/api/AddJob -d @test/invalid_job.json
 	@echo "## Adding good job"
 	@$(CURL_TEST) $(TEST_URL)/api/AddJob -d @test/good_job.json
+	@echo "## Adding good job - idempotent retry"
+	@$(CURL_TEST) $(TEST_URL)/api/AddJob -d @test/good_job.json
 	@echo "## Taking job"
 	@$(CURL_TEST) $(TEST_URL)/api/TakeJob -d @test/take_job.json
 	@echo "## Taking job a 2nd time (does not exist)"
