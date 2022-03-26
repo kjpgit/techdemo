@@ -22,7 +22,7 @@ var app = builder.Build();
 app.Use(async (ctx, next) =>
 {
     try {
-        await next();
+        await next(ctx);
     }
     catch(MyWebException ex) {
         ctx.Response.StatusCode = ex.m_code;
