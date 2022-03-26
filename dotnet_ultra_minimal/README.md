@@ -10,7 +10,7 @@ imagined, in the most over-engineered fashion to get a promotion?
 
 Well, you don't HAVE to use them.  If you want to make a microservice that just
 runs for years, without care and feeding, to solve business needs, read on.
-Look at the source files in this repo for ideas.
+Look at the source files in this repo for ideas, starting with [program.cs](program.cs).
 
 To run this example, install dotnet 6 SDK on linux and then run:
 
