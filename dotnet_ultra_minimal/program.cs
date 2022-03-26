@@ -15,14 +15,15 @@ builder.Services.Configure<JsonOptions>(options =>
 
 var app = builder.Build();
 
+// See https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-6.0
 // This is so nice.  Wrap all our requests in a try/catch.
 // This handles authentication, authorization, or any other
 // failures we want to map to a nice HTTP response.
-// Of course I didn't stumble upon this wonderful feature in the official 'minimal' docs...
+// Unfortunately, the official 'minimal' docs don't point you to this...
 app.Use(async (ctx, next) =>
 {
     try {
-        // pass in ctx per https://github.com/dotnet/aspnetcore/pull/31784
+        // Pass in ctx per https://github.com/dotnet/aspnetcore/pull/31784
         await next(ctx);
     }
     catch(MyWebException ex) {
@@ -33,6 +34,8 @@ app.Use(async (ctx, next) =>
 
 var controller = new MyController();
 
+// This routing and presumably reflection could be replaced with our
+// own code, maybe v2 of this example will do that.
 app.MapPost("/api/AddJob", controller.AddJob);
 app.MapPost("/api/TakeJob", controller.TakeJob);
 
