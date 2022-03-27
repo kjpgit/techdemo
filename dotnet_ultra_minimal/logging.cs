@@ -1,5 +1,9 @@
 // Super simple logging that actually works
 // (If you are in a container that just needs to get stdout/stderr)
+//
+// Unlike the built in console logger that delays output:
+// https://stackoverflow.com/questions/50221983/cant-get-console-logging-to-work-in-net-core-2-0
+//
 
 public sealed class SimpleLogger  : ILogger
 {

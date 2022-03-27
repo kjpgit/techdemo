@@ -56,8 +56,6 @@ class MyController
     {
         // In real life you'd init the AWS dynamodb client here :-)
 
-        // Unlike the built in console logger that delays output:
-        // https://stackoverflow.com/questions/50221983/cant-get-console-logging-to-work-in-net-core-2-0
         _logger = new SimpleLogger("MyController", min_level: LogLevel.Trace);
         _logger.LogInformation("example log information message");
     }
