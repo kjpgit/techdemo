@@ -20,7 +20,7 @@ var app = builder.Build();
 // This handles authentication, authorization, or any other
 // failures we want to map to a nice HTTP response.
 // Unfortunately, the official 'minimal' docs don't point you to this...
-app.Use(async (ctx, next) =>
+app.Use(async (HttpContext  ctx, RequestDelegate next) =>
 {
     try {
         // Pass in ctx per https://github.com/dotnet/aspnetcore/pull/31784
