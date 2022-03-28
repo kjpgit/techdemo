@@ -22,6 +22,9 @@ var app = builder.Build();
 // Unfortunately, the official 'minimal' docs don't point you to this...
 app.Use(async (HttpContext ctx, RequestDelegate next) =>
 {
+    // Setting an AsyncLocal here (ambient state) would be very useful.
+    // You can store user info and any other info to log in json when the request is done,
+    // and all methods have implicit access to it.
     try {
         // Pass in ctx per https://github.com/dotnet/aspnetcore/pull/31784
         await next(ctx);
