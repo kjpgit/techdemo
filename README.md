@@ -1,6 +1,3 @@
-## March 2022
-
-* [Ultra Minimal .NET Core Webservice (on Linux)](dotnet_ultra_minimal/)
 
 ## April 2021
 
